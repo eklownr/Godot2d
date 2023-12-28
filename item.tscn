@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cifrjaxbdxbij"]
+
+[ext_resource type="Texture2D" uid="uid://by7j4kqgywg3c" path="res://item/hart.png" id="1_0lo0g"]
+[ext_resource type="Script" path="res://item.gd" id="1_8nrnn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_05xc1"]
+radius = 23.0
+
+[node name="Item" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_8nrnn")
+
+[node name="Hart" type="Sprite2D" parent="."]
+position = Vector2(-0.5, 1)
+scale = Vector2(0.975, 1)
+texture = ExtResource("1_0lo0g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_05xc1")

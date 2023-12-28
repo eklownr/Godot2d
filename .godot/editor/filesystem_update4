@@ -1,0 +1,13 @@
+res://suvivers_game.tscn
+res://smoke_explosion/smoke_explosion.gdshader
+res://suvivers_game.gd
+res://player.gd
+res://mob.gd
+res://mob.tscn
+res://player.tscn
+res://gun.gd
+res://gun.tscn
+res://bullet.tscn
+res://pine_tree.tscn
+res://item.tscn
+res://item.gd
