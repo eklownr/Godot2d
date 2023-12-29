@@ -26,8 +26,9 @@ texture = ExtResource("1_mlulq")
 unique_name_in_owner = true
 position = Vector2(26.4627, -11.7867)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.3
+[node name="ShootTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.1
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_timer_timeout"]

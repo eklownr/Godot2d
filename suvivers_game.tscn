@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://1ckc58w5sfxa" path="res://player.tscn" id="1_fpp8s"]
 [ext_resource type="Script" path="res://suvivers_game.gd" id="1_m5db8"]
 [ext_resource type="PackedScene" uid="uid://byt5n3frbq0y3" path="res://pine_tree.tscn" id="2_mdk5t"]
-[ext_resource type="PackedScene" uid="uid://cifrjaxbdxbij" path="res://item.tscn" id="4_3ed0s"]
 
 [sub_resource type="Curve2D" id="Curve2D_dvyg8"]
 _data = {
@@ -11,8 +10,15 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="Curve2D" id="Curve2D_wxpba"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 826, 75, 0, 0, 0, 0, 1399, 54, 0, 0, 0, 0, 1377, 408, 0, 0, 0, 0, 811, 425, 0, 0, 0, 0, 811, 70)
+}
+point_count = 5
+
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
+position = Vector2(10, 13)
 script = ExtResource("1_m5db8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -20,14 +26,14 @@ layer = -33
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(0.619608, 0.901961, 0.835294, 1)
-offset_left = -3.0
-offset_top = -2.0
-offset_right = 1938.0
-offset_bottom = 1093.0
+offset_left = -38.0
+offset_top = -1.0
+offset_right = 1903.0
+offset_bottom = 1094.0
 
 [node name="player" parent="." instance=ExtResource("1_fpp8s")]
 unique_name_in_owner = true
-position = Vector2(899, 528)
+position = Vector2(902, 544)
 rotation = -0.004403
 collision_mask = 12
 
@@ -40,6 +46,33 @@ curve = SubResource("Curve2D_dvyg8")
 unique_name_in_owner = true
 position = Vector2(-163, -129)
 rotation = -0.00271002
+
+[node name="Control" type="Control" parent="player"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -899.596
+offset_top = -547.966
+offset_right = -859.596
+offset_bottom = -507.966
+
+[node name="ScoreText" type="Label" parent="player/Control"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 2.0
+offset_right = 100.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 33
+text = "Score: "
+
+[node name="Score" type="Label" parent="player/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 112.0
+offset_top = 4.0
+offset_right = 483.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 33
+text = "0"
 
 [node name="pineTree" parent="." instance=ExtResource("2_mdk5t")]
 position = Vector2(289, 315)
@@ -81,11 +114,12 @@ autostart = true
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="GameOver"]
-offset_right = 2012.0
-offset_bottom = 1140.0
+offset_left = -63.0
+offset_top = -13.0
+offset_right = 1949.0
+offset_bottom = 1127.0
 color = Color(0, 0, 0, 0.337255)
 
 [node name="Label" type="Label" parent="GameOver/ColorRect"]
@@ -123,8 +157,18 @@ text = "
 
 Press ENTER to play"
 
-[node name="Item" parent="." instance=ExtResource("4_3ed0s")]
-position = Vector2(589, 336)
+[node name="Path2DItem" type="Path2D" parent="."]
+curve = SubResource("Curve2D_wxpba")
+
+[node name="PathFollowItem" type="PathFollow2D" parent="Path2DItem"]
+unique_name_in_owner = true
+position = Vector2(826, 75)
+rotation = -0.0366328
+
+[node name="TimerItem" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
 
 [connection signal="health_depleted" from="player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="spawnMobTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerItem" to="." method="_on_timer_item_timeout"]

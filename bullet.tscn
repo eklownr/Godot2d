@@ -12,6 +12,7 @@ rotation = -0.0334854
 collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_6jg8j")
+speed = 2000
 
 [node name="Projectile" type="Sprite2D" parent="."]
 position = Vector2(-11, -1)

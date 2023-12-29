@@ -1,19 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://cifrjaxbdxbij"]
+[gd_scene load_steps=5 format=3 uid="uid://cifrjaxbdxbij"]
 
-[ext_resource type="Texture2D" uid="uid://by7j4kqgywg3c" path="res://item/hart.png" id="1_0lo0g"]
 [ext_resource type="Script" path="res://item.gd" id="1_8nrnn"]
+[ext_resource type="Texture2D" uid="uid://cksiu5gst6fmp" path="res://characters/happy_boo/square_body.png" id="2_ipr6s"]
+[ext_resource type="Texture2D" uid="uid://kje7og6r3usf" path="res://item/hart5.png" id="3_vn4do"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_05xc1"]
-radius = 23.0
+radius = 58.0
 
 [node name="Item" type="Area2D"]
 collision_layer = 0
+collision_mask = 9
 script = ExtResource("1_8nrnn")
 
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(0.690196, 0.796078, 0.760784, 0.654902)
+position = Vector2(-4.76837e-07, 63.4375)
+scale = Vector2(0.809524, 0.371575)
+texture = ExtResource("2_ipr6s")
+
 [node name="Hart" type="Sprite2D" parent="."]
-position = Vector2(-0.5, 1)
+position = Vector2(-2.98023e-08, 14)
 scale = Vector2(0.975, 1)
-texture = ExtResource("1_0lo0g")
+texture = ExtResource("3_vn4do")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_05xc1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

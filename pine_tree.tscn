@@ -10,15 +10,16 @@ radius = 20.0
 collision_layer = 4
 collision_mask = 15
 
+[node name="GroundShadow" type="Sprite2D" parent="."]
+modulate = Color(0.223529, 0.486275, 0.498039, 0.384314)
+position = Vector2(4, 17)
+scale = Vector2(0.790464, 0.697785)
+texture = ExtResource("1_fw18q")
+
 [node name="PineTree" type="Sprite2D" parent="."]
 position = Vector2(-1, -59)
 texture = ExtResource("2_pi3e0")
 
-[node name="GroundShadow" type="Sprite2D" parent="."]
-modulate = Color(0.223529, 0.486275, 0.498039, 0.384314)
-position = Vector2(-1.19209e-07, -1.19209e-07)
-scale = Vector2(0.790464, 0.697785)
-texture = ExtResource("1_fw18q")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
 shape = SubResource("CircleShape2D_c1ss3")
