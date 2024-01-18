@@ -1,15 +1,19 @@
-extends Area2D
+extends Node2D
 
-@onready var player = get_node("/root/Game/player")
+func play_idle_animation():
+	%AnimationPortal.play("idle")
+
+func play_active_animation():
+	%AnimationPortal.play("active")
+
 
 func _ready():
-	#%Hart.play_idle()
 	pass
-	
+	#play_idle_animation()
+
 
 func restart():
 	die()
-
 
 func die():
 	queue_free()
@@ -18,7 +22,3 @@ func die():
 	get_parent().add_child(smoke)
 	smoke.global_position = global_position
 
-func _on_body_entered(body):
-	body.health = 100
-	#gun.ShootTimer.wait_time = 0.1
-	die()

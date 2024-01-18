@@ -1,4 +1,11 @@
-res://suvivers_game.tscn
-res://smoke_explosion/smoke_explosion.gdshader
 res://suvivers_game.gd
-res://pine_tree.tscn
+res://smoke_explosion/smoke_explosion.gdshader
+res://portal.gd
+res://portal.tscn
+res://player.tscn
+res://player.gd
+res://suvivers_game.tscn
+res://characters/happy_boo/happy_boo.tscn
+res://item.tscn
+res://pine_tree.gd
+res://item.gd
