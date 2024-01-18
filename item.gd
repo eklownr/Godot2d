@@ -1,6 +1,6 @@
 extends Area2D
 
-var health = 5
+
 @onready var player = get_node("/root/Game/player")
 #@onready var gun = get_node("/root/Game/player/Gun")
 
@@ -8,14 +8,10 @@ func _ready():
 	#%Hart.play_idle()
 	pass
 	
-	  
-func _physics_process(_delta):
-	pass
-	
-func take_damage():
-	health -= 1
-	if health < 0:
-		die()
+
+func restart():
+	die()
+
 
 func die():
 	queue_free()

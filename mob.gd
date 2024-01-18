@@ -11,14 +11,21 @@ func _physics_process(_delta):
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * 300
 	move_and_slide()
-	
+
+func die():
+	queue_free()
+	const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")
+	var smoke = SMOKE_SCENE.instantiate()
+	get_parent().add_child(smoke)
+	smoke.global_position = global_position
+
+func restart():
+	die()
+
 func take_damage():
 	player.score += 1
 	health -= 1
 	%Slime.play_hurt()
 	if health < 0:
-		queue_free()
-		const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")
-		var smoke = SMOKE_SCENE.instantiate()
-		get_parent().add_child(smoke)
-		smoke.global_position = global_position
+		die()
+		
