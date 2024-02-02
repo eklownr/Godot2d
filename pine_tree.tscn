@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://byt5n3frbq0y3"]
+[gd_scene load_steps=5 format=3 uid="uid://byt5n3frbq0y3"]
 
 [ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://characters/ground_shadow.png" id="1_fw18q"]
+[ext_resource type="Script" path="res://pine_tree.gd" id="1_m0tv1"]
 [ext_resource type="Texture2D" uid="uid://caqfk2xng5v5u" path="res://trees/pine_tree.png" id="2_pi3e0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c1ss3"]
@@ -9,6 +10,8 @@ radius = 20.0
 [node name="pineTree" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 15
+input_pickable = true
+script = ExtResource("1_m0tv1")
 
 [node name="GroundShadow" type="Sprite2D" parent="."]
 modulate = Color(0.223529, 0.486275, 0.498039, 0.384314)
@@ -23,3 +26,5 @@ texture = ExtResource("2_pi3e0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
 shape = SubResource("CircleShape2D_c1ss3")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

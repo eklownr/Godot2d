@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxrimu2c0gfae"]
+
+[ext_resource type="Script" path="res://pause.gd" id="1_mkwb7"]
+[ext_resource type="Script" path="res://Button.gd" id="2_j4con"]
+
+[node name="CanvasLayer2" type="CanvasLayer"]
+layer = 55
+
+[node name="pause" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mkwb7")
+
+[node name="ColorRect" type="ColorRect" parent="pause"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0352941, 0, 0.027451, 1)
+
+[node name="Button" type="Button" parent="pause"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.5
+offset_top = -127.0
+offset_right = 294.5
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.886275, 0.223529, 0, 1)
+theme_override_colors/font_hover_color = Color(0.803922, 0.0431373, 0, 1)
+theme_override_colors/font_outline_color = Color(0.580392, 0, 0, 1)
+theme_override_font_sizes/font_size = 180
+text = "Quit"
+script = ExtResource("2_j4con")
+
+[connection signal="pressed" from="pause/Button" to="pause" method="_on_button_pressed"]

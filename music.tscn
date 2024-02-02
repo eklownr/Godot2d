@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn4e3cea8cfqy"]
+
+[ext_resource type="AudioStream" uid="uid://c6f3f1w37qxxy" path="res://music/tungc.mp3" id="1_waaeu"]
+[ext_resource type="Script" path="res://audio.gd" id="2_dhj2g"]
+
+[node name="audio" type="AudioStreamPlayer2D"]
+unique_name_in_owner = true
+stream = ExtResource("1_waaeu")
+autoplay = true
+max_distance = 4000.0
+script = ExtResource("2_dhj2g")

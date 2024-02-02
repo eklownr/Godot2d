@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvybmwr4hps8e"]
+
+[ext_resource type="Script" path="res://boss.gd" id="1_qb58x"]
+[ext_resource type="PackedScene" uid="uid://o72tgmxtmn72" path="res://Boss_spite.tscn" id="2_pifx6"]
+[ext_resource type="PackedScene" uid="uid://dvjgkm8mx6hrt" path="res://won_the_game.tscn" id="3_6oo2e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4n41q"]
+size = Vector2(870, 171)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcfl0"]
+bg_color = Color(0.27451, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7po2"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.996078, 0.996078, 0.996078, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="boss" type="CharacterBody2D"]
+collision_layer = 2
+slide_on_ceiling = false
+floor_stop_on_slope = false
+floor_block_on_wall = false
+platform_floor_layers = 4294967040
+script = ExtResource("1_qb58x")
+
+[node name="Boss_sprite" parent="." instance=ExtResource("2_pifx6")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 89)
+shape = SubResource("RectangleShape2D_4n41q")
+
+[node name="won_the_game" parent="." instance=ExtResource("3_6oo2e")]
+unique_name_in_owner = true
+
+[node name="bossBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0, 1)
+offset_left = -195.0
+offset_top = -289.0
+offset_right = 5.0
+offset_bottom = -266.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_jcfl0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_e7po2")
+value = 100.0
+
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

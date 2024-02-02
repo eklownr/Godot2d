@@ -1,8 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2erbc64qgcti"]
+[gd_scene load_steps=15 format=3 uid="uid://b2erbc64qgcti"]
 
 [ext_resource type="PackedScene" uid="uid://1ckc58w5sfxa" path="res://player.tscn" id="1_fpp8s"]
 [ext_resource type="Script" path="res://suvivers_game.gd" id="1_m5db8"]
 [ext_resource type="PackedScene" uid="uid://byt5n3frbq0y3" path="res://pine_tree.tscn" id="2_mdk5t"]
+[ext_resource type="PackedScene" uid="uid://ufy7fqlf84lg" path="res://p_1.tscn" id="5_7x4ki"]
+[ext_resource type="PackedScene" uid="uid://ju7hevha8mgw" path="res://p_2.tscn" id="6_bd4ft"]
+[ext_resource type="PackedScene" uid="uid://c37hfn17m4yvb" path="res://p_3.tscn" id="6_wd4t7"]
+[ext_resource type="PackedScene" uid="uid://dn4e3cea8cfqy" path="res://music.tscn" id="7_3sukm"]
+[ext_resource type="PackedScene" uid="uid://sy47hfuibnsb" path="res://level_id.tscn" id="8_4w4v8"]
+[ext_resource type="PackedScene" uid="uid://jfegp3gaq606" path="res://level_text.tscn" id="9_fb5ig"]
+[ext_resource type="PackedScene" uid="uid://cw1hghni1xh0h" path="res://item_gun.tscn" id="10_v1b2u"]
+[ext_resource type="PackedScene" uid="uid://cxrimu2c0gfae" path="res://pause.tscn" id="11_tetjt"]
+[ext_resource type="PackedScene" uid="uid://dvjgkm8mx6hrt" path="res://won_the_game.tscn" id="12_5y10h"]
 
 [sub_resource type="Curve2D" id="Curve2D_dvyg8"]
 _data = {
@@ -12,9 +21,9 @@ point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_wxpba"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 826, 75, 0, 0, 0, 0, 1399, 54, 0, 0, 0, 0, 1377, 408, 0, 0, 0, 0, 811, 425, 0, 0, 0, 0, 811, 70)
+"points": PackedVector2Array(0, 0, 0, 0, 812, 74.6658, 0, 0, 0, 0, 826, 48.0955, 0, 0, 0, 0, 1414, 47.1114, 0, 0, 0, 0, 1414, 426.968, 0, 0, 0, 0, 811, 425, 0, 0, 0, 0, 811, 70)
 }
-point_count = 5
+point_count = 6
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -30,6 +39,7 @@ offset_left = -38.0
 offset_top = -1.0
 offset_right = 1903.0
 offset_bottom = 1094.0
+color = Color(0, 0.419608, 0.972549, 1)
 
 [node name="player" parent="." instance=ExtResource("1_fpp8s")]
 unique_name_in_owner = true
@@ -74,20 +84,28 @@ offset_bottom = 50.0
 theme_override_font_sizes/font_size = 33
 text = "0"
 
-[node name="pineTree" parent="." instance=ExtResource("2_mdk5t")]
-position = Vector2(289, 315)
-rotation = -0.092736
+[node name="Time" type="Label" parent="player/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 710.98
+offset_top = 6.13049
+offset_right = 750.98
+offset_bottom = 52.1305
+theme_override_font_sizes/font_size = 33
+text = "0"
 
-[node name="pineTree2" parent="." instance=ExtResource("2_mdk5t")]
-position = Vector2(550, 736)
-rotation = 0.105447
+[node name="TimeLable" type="Label" parent="player/Control"]
+layout_mode = 0
+offset_left = 597.981
+offset_top = 4.56691
+offset_right = 694.981
+offset_bottom = 50.5669
+theme_override_font_sizes/font_size = 33
+text = "Time: "
 
 [node name="pineTree3" parent="." instance=ExtResource("2_mdk5t")]
 position = Vector2(167, 473)
 rotation = 0.0709089
-
-[node name="pineTree4" parent="." instance=ExtResource("2_mdk5t")]
-position = Vector2(196, 1108)
 
 [node name="pineTree5" parent="." instance=ExtResource("2_mdk5t")]
 position = Vector2(1674, 210)
@@ -100,14 +118,6 @@ rotation = -0.0543282
 [node name="pineTree7" parent="." instance=ExtResource("2_mdk5t")]
 position = Vector2(554, 64)
 
-[node name="pineTree8" parent="." instance=ExtResource("2_mdk5t")]
-position = Vector2(1513, 650)
-rotation = 0.0346991
-
-[node name="pineTree9" parent="." instance=ExtResource("2_mdk5t")]
-position = Vector2(1438, 767)
-rotation = -0.0683534
-
 [node name="spawnMobTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
@@ -116,10 +126,10 @@ autostart = true
 unique_name_in_owner = true
 
 [node name="ColorRect" type="ColorRect" parent="GameOver"]
-offset_left = -63.0
-offset_top = -13.0
-offset_right = 1949.0
-offset_bottom = 1127.0
+offset_left = -46.0
+offset_top = -12.0
+offset_right = 1966.0
+offset_bottom = 1128.0
 color = Color(0, 0, 0, 0.337255)
 
 [node name="Label" type="Label" parent="GameOver/ColorRect"]
@@ -158,17 +168,73 @@ text = "
 Press ENTER to play"
 
 [node name="Path2DItem" type="Path2D" parent="."]
+position = Vector2(0, -6.87331)
+scale = Vector2(1, 1.01617)
 curve = SubResource("Curve2D_wxpba")
 
 [node name="PathFollowItem" type="PathFollow2D" parent="Path2DItem"]
 unique_name_in_owner = true
-position = Vector2(826, 75)
-rotation = -0.0366328
+position = Vector2(812, 74.6658)
+rotation = -1.08586
 
 [node name="TimerItem" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 8.0
+autostart = true
+
+[node name="p1" parent="." instance=ExtResource("5_7x4ki")]
+position = Vector2(200, 1000)
+
+[node name="p2" parent="." instance=ExtResource("6_bd4ft")]
+position = Vector2(900, 1000)
+
+[node name="p3" parent="." instance=ExtResource("6_wd4t7")]
+position = Vector2(1600, 1000)
+
+[node name="level_id" parent="." instance=ExtResource("8_4w4v8")]
+level_id = 1
+
+[node name="level_text" parent="." instance=ExtResource("9_fb5ig")]
+unique_name_in_owner = true
+
+[node name="music1" parent="." instance=ExtResource("7_3sukm")]
+unique_name_in_owner = false
+max_distance = 10000.0
+attenuation = 0.870551
+script = null
+
+[node name="item_gun10" parent="." instance=ExtResource("10_v1b2u")]
+position = Vector2(362, 238)
+
+[node name="item_gun11" parent="." instance=ExtResource("10_v1b2u")]
+position = Vector2(722, 67)
+
+[node name="item_gun" parent="." instance=ExtResource("10_v1b2u")]
+position = Vector2(665, 406)
+
+[node name="item_gun2" parent="." instance=ExtResource("10_v1b2u")]
+position = Vector2(470, 334)
+
+[node name="item_gun3" parent="." instance=ExtResource("10_v1b2u")]
+position = Vector2(650, 334)
+
+[node name="item_gun4" parent="." instance=ExtResource("10_v1b2u")]
+position = Vector2(545, 412)
+
+[node name="item_gun5" parent="." instance=ExtResource("10_v1b2u")]
+position = Vector2(404, 421)
+
+[node name="item_gun6" parent="." instance=ExtResource("10_v1b2u")]
+position = Vector2(746, 364)
+
+[node name="pause" parent="." instance=ExtResource("11_tetjt")]
+
+[node name="won_the_game" parent="." instance=ExtResource("12_5y10h")]
+
+[node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [connection signal="health_depleted" from="player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="spawnMobTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerItem" to="." method="_on_timer_item_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Clock_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_clock_timer_timeout"]
